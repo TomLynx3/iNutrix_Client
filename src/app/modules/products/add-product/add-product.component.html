@@ -1,0 +1,27 @@
+<div class="form-container">
+  <form [formGroup]="productAddForm">
+    <div class="form-input">
+      <div class="form-text text-muted">
+        {{ "PRODUCT_FORM_NAME" | translate }}
+        <span
+          class="required-asterix"
+          *ngIf="productAddForm?.controls?.productName?.errors?.required"
+          >*</span
+        >
+      </div>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <custom-icon [iconData]="nameIcon"></custom-icon>
+          </div>
+        </div>
+        <input
+          formControlName="productName"
+          type="text"
+          class="form-control shadow-none"
+          placeholder="{{ 'PRODUCT_FORM_NAME' | translate }}"
+        />
+      </div>
+    </div>
+  </form>
+</div>

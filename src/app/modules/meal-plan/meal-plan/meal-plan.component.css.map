@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,MAAM;EACf,aAAa,EAAE,MAAM;EACrB,qBAAqB,EAAE,MAAM;EAC7B,kBAAkB,EAAE,MAAM;EAC1B,iBAAiB,EAAE,MAAM;EACzB,gBAAgB,EAAE,MAAM;CACzB",
+    "sources": [
+        "meal-plan.component.scss"
+    ],
+    "names": [],
+    "file": "meal-plan.component.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,aAAa,EAAE,MAAM;CACtB;;AAED,AAAA,cAAc,CAAC;EACb,MAAM,EAAE,GAAG;CACZ",
+    "sources": [
+        "products-table.component.scss"
+    ],
+    "names": [],
+    "file": "products-table.component.css"
+}

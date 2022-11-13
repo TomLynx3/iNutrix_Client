@@ -1,0 +1,32 @@
+@import "./variables";
+
+.dropdown {
+  button {
+    background-color: $accent-color;
+    width: 100%;
+    text-align: left;
+
+    &:after {
+      position: absolute;
+      font-size: 25px;
+      right: 15px;
+      top: 15px;
+    }
+
+    &:hover,
+    &:active {
+      border: 1px solid $accent-color;
+      background-color: $accent-color !important;
+      filter: brightness(0.8) !important;
+      -webkit-filter: brightness(0.8) !important;
+    }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
