@@ -8,8 +8,14 @@ import { SharedModule } from '../shared/shared.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SideModalModule } from '../sidemodal/sidemodal.module';
 import { AddProductComponent } from './add-product/add-product.component';
+import { BanListComponent } from './ban-list/ban-list.component';
 @NgModule({
-  declarations: [ProductsComponent, ProductsTableComponent, AddProductComponent],
+  declarations: [
+    ProductsComponent,
+    ProductsTableComponent,
+    AddProductComponent,
+    BanListComponent,
+  ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
@@ -18,5 +24,6 @@ import { AddProductComponent } from './add-product/add-product.component';
     MatCheckboxModule,
     SideModalModule,
   ],
+  exports: [BanListComponent],
 })
 export class ProductsModule {}

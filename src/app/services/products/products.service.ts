@@ -14,6 +14,8 @@ export class ProductsService {
   public getAllProducts(): Observable<GetAllProductsRes> {
     return this._http.get<GetAllProductsRes>(this._controllerURL);
   }
+
+  
 }
 
 export interface GetAllProductsRes extends BaseResponse {
