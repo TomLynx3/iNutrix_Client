@@ -64,6 +64,7 @@ export class ProductsTableComponent implements OnInit {
     for (let product of this.products) {
       product.selected = event.checked;
     }
+    console.log(this.products)
   }
 
   public toggleSelect(event: MatCheckboxChange, product: ProductDTO) {
@@ -79,4 +80,5 @@ export class ProductsTableComponent implements OnInit {
   public close() {
     this._sideModalService.close();
   }
+
 }

@@ -38,18 +38,6 @@
       <div class="page-name">
         <span *ngIf="currentPage">{{ currentPage.name | translate }}</span>
       </div>
-      <!-- 
-      <div class="action-container">
-        <div class="action" (click)="logout()">
-          <custom-icon
-            [icon]="{
-              iconFamily: IconFamily.FONTAWESOME,
-              value: ['fas', 'door-open']
-            }"
-          ></custom-icon>
-          <span>Logout</span>
-        </div>
-      </div> -->
     </mat-toolbar>
     <div class="content custom-card">
       <router-outlet></router-outlet>
