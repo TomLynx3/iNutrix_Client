@@ -7,7 +7,11 @@ import {
 } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { CustomIcon, IconFamily } from '@ibabylondev/custom-icon';
-import { ProductDTO } from 'src/app/services/products/products.service';
+import {
+  GetAllProductsRes,
+  ProductDTO,
+  ProductsService,
+} from 'src/app/services/products/products.service';
 import { Translate } from 'src/app/utilities/tools';
 import { SidemodalService } from '../../sidemodal/services/sidemodal.service';
 import { SidemodalComponent } from '../../sidemodal/sidemodal/sidemodal.component';
@@ -19,9 +23,6 @@ import { SidemodalComponent } from '../../sidemodal/sidemodal/sidemodal.componen
 })
 @Translate({ en: require('../i18n/products.en.json') })
 export class ProductsTableComponent implements OnInit {
-  @ViewChild('sidebar') public sideModal: TemplateRef<any> | undefined;
-
-  @Input()
   public products: ProductDTO[] = [];
 
   public displayedColumns: string[] = [
@@ -48,37 +49,26 @@ export class ProductsTableComponent implements OnInit {
     value: ['fas', 'pen-to-square'],
   };
 
-  public deleteIcon: CustomIcon = {
-    iconFamily: IconFamily.FONTAWESOME,
-    value: ['fas', 'trash'],
-  };
-  public addIcon: CustomIcon = {
-    iconFamily: IconFamily.FONTAWESOME,
-    value: ['fas', 'plus'],
-  };
-  constructor(private readonly _sideModalService: SidemodalService) {}
+  constructor(private readonly _productsService: ProductsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._productsService
+      .getAllProducts()
+      .subscribe((res: GetAllProductsRes) => {
+        if (res.success) {
+          this.products = res.result;
+        }
+      });
+  }
 
   public selectAll(event: MatCheckboxChange) {
     for (let product of this.products) {
       product.selected = event.checked;
     }
-    console.log(this.products)
+    console.log(this.products);
   }
 
   public toggleSelect(event: MatCheckboxChange, product: ProductDTO) {
     product.selected = event.checked;
   }
-
-  public addNewProduct() {
-    if (this.sideModal) {
-      this._sideModalService.open(this.sideModal);
-    }
-  }
-
-  public close() {
-    this._sideModalService.close();
-  }
-
 }
