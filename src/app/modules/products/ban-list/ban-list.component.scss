@@ -1,0 +1,59 @@
+@import "../../../../styles/variables";
+
+.ban-list-container {
+  position: relative;
+  .title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .product-ban-list {
+    overflow: hidden;
+    min-width: 600px;
+
+    max-height: 400px;
+    min-height: 200px;
+    overflow-y: scroll;
+
+    .mat-header-cell {
+      width: 50%;
+    }
+  }
+
+  .actions {
+    display: flex;
+    width: 100% !important;
+    min-width: 150px !important;
+    justify-content: space-around;
+  }
+
+  .action-header-container {
+    &:hover {
+      cursor: pointer;
+    }
+    color: $success-color;
+    display: flex;
+    flex-direction: column;
+
+    .action-name {
+      font-size: 0.8em;
+    }
+  }
+  .remove {
+    color: $error-color !important;
+  }
+
+  .empty-list {
+    color: black;
+    position: absolute;
+    left: 28%;
+    bottom: 30%;
+
+    p {
+      font-size: 1.5em;
+      font-style: italic;
+      color: rgba(0, 0, 0, 0.54);
+      font-weight: bold;
+    }
+  }
+}

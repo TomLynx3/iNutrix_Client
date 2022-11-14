@@ -11,6 +11,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { UserDataFormComponent } from './components/user-data-form/user-data-form.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ToastrModule } from 'ngx-toastr';
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
