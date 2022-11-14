@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { CustomIcon, IconFamily } from '@ibabylondev/custom-icon';
 import {
   GetAllProductsRes,
   ProductDTO,
   ProductsService,
 } from 'src/app/services/products/products.service';
+import { SidemodalService } from '../../sidemodal/services/sidemodal.service';
 
 @Component({
   selector: 'app-products',
@@ -11,17 +13,30 @@ import {
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  constructor(private readonly _productsService: ProductsService) {}
+  @ViewChild('sidebar') public sideModal: TemplateRef<any> | undefined;
+
+  constructor(private readonly _sideModalService: SidemodalService) {}
+
+  public deleteIcon: CustomIcon = {
+    iconFamily: IconFamily.FONTAWESOME,
+    value: ['fas', 'trash'],
+  };
+  public addIcon: CustomIcon = {
+    iconFamily: IconFamily.FONTAWESOME,
+    value: ['fas', 'plus'],
+  };
 
   public products: ProductDTO[] = [];
 
-  ngOnInit(): void {
-    this._productsService
-      .getAllProducts()
-      .subscribe((res: GetAllProductsRes) => {
-        if (res.success) {
-          this.products = res.result;
-        }
-      });
+  ngOnInit(): void {}
+
+  public addNewProduct() {
+    if (this.sideModal) {
+      this._sideModalService.open(this.sideModal);
+    }
+  }
+
+  public close() {
+    this._sideModalService.close();
   }
 }

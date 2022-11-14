@@ -15,12 +15,20 @@ export class ProductsService {
     return this._http.get<GetAllProductsRes>(this._controllerURL);
   }
 
-  
+  public getProductGroups(): ProductGroupDTO[] {
+    return [
+      {
+        groupName: "Vegetables", 
+        id: '1',
+      }
+    ]
+  }
 }
 
 export interface GetAllProductsRes extends BaseResponse {
   result: ProductDTO[];
 }
+
 
 export interface ProductGroupDTO {
   groupName: string;
