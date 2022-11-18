@@ -14,7 +14,7 @@ import { SidemodalService } from '../../sidemodal/services/sidemodal.service';
 })
 export class ProductsComponent implements OnInit {
   @ViewChild('sidebar') public sideModal: TemplateRef<any> | undefined;
-
+  
   constructor(private readonly _sideModalService: SidemodalService) {}
 
   public deleteIcon: CustomIcon = {
@@ -28,6 +28,7 @@ export class ProductsComponent implements OnInit {
 
   public products: ProductDTO[] = [];
 
+
   ngOnInit(): void {}
 
   public addNewProduct() {
@@ -39,4 +40,9 @@ export class ProductsComponent implements OnInit {
   public close() {
     this._sideModalService.close();
   }
+
+  public saveProduct(newProduct: ProductDTO) : void {
+    console.log(newProduct)
+  }
+
 }
