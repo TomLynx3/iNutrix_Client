@@ -2,10 +2,15 @@
   "COMMON_ENTER": "Enter",
   "COMMON_SAVE": "Save",
   "COMMON_CLOSE": "Close",
+  "COMMON_SEARCH": "Search",
   "COMMON_SELECT_ALL": "Select All",
   "COMMON_DELETE": "Delete",
   "COMMON_REMOVE": "Remove",
+  "COMMON_CANCEL": "Cancel",
+  "COMMON_YES": "Yes",
   "COMMON_ADD": "Add",
   "COMMON_SUCCESSFULLY_SAVED": "Successfully saved",
-  "COMMONT_EMPTY_LIST": "List is empty"
+  "COMMONT_EMPTY_LIST": "List is empty",
+  "COMMON_SELECT": "Select",
+  "COMMIN_PROCEED": "Do you want to proceed?"
 }

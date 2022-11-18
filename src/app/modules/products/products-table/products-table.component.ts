@@ -23,7 +23,15 @@ import { SidemodalComponent } from '../../sidemodal/sidemodal/sidemodal.componen
 })
 @Translate({ en: require('../i18n/products.en.json') })
 export class ProductsTableComponent implements OnInit {
+  @Input()
+  public allowEdit: boolean = true;
+
+  @Input()
+  public ignoreProducts: string[] = [];
+
   public products: ProductDTO[] = [];
+
+  public productsToRender: ProductDTO[] = [];
 
   public displayedColumns: string[] = [
     'actions',
@@ -56,7 +64,11 @@ export class ProductsTableComponent implements OnInit {
       .getAllProducts()
       .subscribe((res: GetAllProductsRes) => {
         if (res.success) {
-          this.products = res.result;
+          this._productsService.parseProducts(res.result);
+          this.products = res.result.filter(
+            (x) => !this.ignoreProducts.includes(x.id)
+          );
+          this.productsToRender = this.products;
         }
       });
   }
@@ -65,10 +77,13 @@ export class ProductsTableComponent implements OnInit {
     for (let product of this.products) {
       product.selected = event.checked;
     }
-    console.log(this.products);
   }
 
   public toggleSelect(event: MatCheckboxChange, product: ProductDTO) {
     product.selected = event.checked;
+  }
+
+  public getSelectedProducts(): ProductDTO[] {
+    return this.products.filter((x) => x.selected);
   }
 }

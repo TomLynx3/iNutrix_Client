@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserDataFormComponent } from 'src/app/components/user-data-form/user-data-form.component';
 import { DropdownDirective } from 'src/app/directives/dropdown.directive';
+import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 export const APP_PROVIDERS = [
   {
@@ -40,9 +42,14 @@ export const APP_PROVIDERS = [
 ];
 
 @NgModule({
-  declarations: [DropdownDirective, UserDataFormComponent],
+  declarations: [
+    DropdownDirective,
+    UserDataFormComponent,
+    ConfirmationDialogComponent,
+  ],
   providers: [APP_PROVIDERS],
   imports: [
+    MatDialogModule,
     CommonModule,
     TranslateModule.forRoot({
       loader: {
@@ -70,6 +77,8 @@ export const APP_PROVIDERS = [
     ReactiveFormsModule,
     DropdownDirective,
     UserDataFormComponent,
+    ConfirmationDialogComponent,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}

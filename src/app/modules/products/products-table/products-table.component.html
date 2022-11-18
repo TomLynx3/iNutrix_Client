@@ -1,14 +1,4 @@
-<!-- <div class="action-bar custom-card">
-  <div class="action-bar-container" (click)="addNewProduct()">
-    <custom-icon [iconData]="addIcon" class="success"></custom-icon>
-    <span class="action-text">{{ "COMMON_ADD" | translate }}</span>
-  </div>
-  <div class="action-bar-container">
-    <custom-icon [iconData]="deleteIcon" class="danger"></custom-icon>
-    <span class="action-text">{{ "COMMON_DELETE" | translate }}</span>
-  </div>
-</div> -->
-<table mat-table [dataSource]="products" class="product-table">
+<table mat-table [dataSource]="productsToRender" class="product-table">
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>
       <mat-checkbox (change)="selectAll($event)">{{
@@ -21,7 +11,10 @@
           [checked]="element.selected"
           (change)="toggleSelect($event, element)"
         ></mat-checkbox>
-        <custom-icon [iconData]="editIcon"></custom-icon>
+        <custom-icon
+          [iconData]="editIcon"
+          *ngIf="element.isCustom"
+        ></custom-icon>
       </div>
     </td>
   </ng-container>
@@ -29,7 +22,7 @@
     <th mat-header-cell *matHeaderCellDef>
       {{ "PRODUCTS_TABLE_PRODUCT_NAME" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.name | translate }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
   </ng-container>
 
   <ng-container matColumnDef="productGroup">
@@ -37,7 +30,7 @@
       {{ "PRODUCTS_TABLE_PRODUCT_GROUP" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      {{ element.productGroup.groupName | translate }}
+      {{ element.productGroup.groupName }}
     </td>
   </ng-container>
   <ng-container matColumnDef="protein">
