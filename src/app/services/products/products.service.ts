@@ -25,6 +25,10 @@ export class ProductsService {
         groupName: 'Vegetables',
         id: '1',
       },
+      {
+        groupName: 'Fruit',
+        id: '2',
+      },
     ];
   }
 

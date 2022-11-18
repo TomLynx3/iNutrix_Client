@@ -40,13 +40,15 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-          {{"PRODUCTS_TABLE_PRODUCT_GROUP" | translate}}
+          {{ selectedActivityType!.groupName | translate }}
+       
           </button>
           <div class="dropdown-menu">
             <a
               class="dropdown-item"
               dropDownItem
               *ngFor="let group of productGroups"
+              (click)="selectProductType(group)"
               
             >
               {{ group.groupName | translate }}
@@ -73,7 +75,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="protein"
             type="number"
             class="form-control shadow-none"
             placeholder=" {{'PRODUCTS_TABLE_PROTEIN' | translate
@@ -98,7 +100,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="fat"
             type="number"
             class="form-control shadow-none"
             placeholder=" {{'PRODUCTS_TABLE_FAT' | translate
@@ -123,7 +125,7 @@
           </div>
         </div>
         <input
-          formControlName="productName"
+          formControlName="carbohydrates"
           type="number"
           class="form-control shadow-none"
           placeholder=" {{'PRODUCTS_TABLE_CARBOHYDRATES' | translate
@@ -149,7 +151,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="kj"
             type="number"
             class="form-control shadow-none"
             placeholder=" {{'PRODUCTS_TABLE_kJ' | translate
@@ -173,7 +175,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="kcal"
             type="number"
             class="form-control shadow-none"
             placeholder=" {{'PRODUCTS_TABLE_kcal' | translate
@@ -199,7 +201,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="a"
             type="number"
             class="form-control shadow-none"
             placeholder="A"
@@ -222,7 +224,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="b1"
             type="number"
             class="form-control shadow-none"
             placeholder="B1"
@@ -247,7 +249,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="b2"
             type="number"
             class="form-control shadow-none"
             placeholder="B2"
@@ -270,7 +272,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="pp"
             type="number"
             class="form-control shadow-none"
             placeholder="PP"
@@ -295,7 +297,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="c"
             type="number"
             class="form-control shadow-none"
             placeholder="C"
@@ -318,7 +320,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="ca"
             type="number"
             class="form-control shadow-none"
             placeholder="Ca"
@@ -343,7 +345,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="p"
             type="number"
             class="form-control shadow-none"
             placeholder="P"
@@ -366,7 +368,7 @@
             </div>
           </div>
           <input
-            formControlName="productName"
+            formControlName="fe"
             type="number"
             class="form-control shadow-none"
             placeholder="Fe"
