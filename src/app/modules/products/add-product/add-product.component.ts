@@ -16,22 +16,11 @@ export class AddProductComponent implements OnInit {
   @Output() public submitProductForm: EventEmitter<ProductDTO> =
     new EventEmitter<ProductDTO>();
 
+  @Output() public submitProductFormGroup: EventEmitter<FormGroup> = 
+  new EventEmitter<FormGroup>();
+
   public selectedActivityType: ProductGroupDTO | undefined;
-  public btnLabel: string = 'COMMON_ENTER';
-  public name: string = '';
-  public protein: number | undefined;
-  public fat: number | undefined;
-  public carbohydrates: number | undefined;
-  public kcal: number | undefined;
-  public kj: number | undefined;
-  public a: number | undefined;
-  public b1: number | undefined;
-  public b2: number | undefined;
-  public pp: number | undefined;
-  public c: number | undefined;
-  public ca: number | undefined;
-  public p: number | undefined;
-  public fe: number | undefined;
+  
   public selected: boolean = false;
 
   public nameIcon: CustomIcon = {
@@ -89,22 +78,25 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.productAddForm = new FormGroup({
       productName: new FormControl('', [Validators.required]),
-      protein: new FormControl(this.protein, [Validators.required]),
-      fat: new FormControl(this.fat, [Validators.required]),
-      carbohydrates: new FormControl(this.carbohydrates, [Validators.required]),
-      kcal: new FormControl(this.kcal, [Validators.required]),
-      kj: new FormControl(this.kj, [Validators.required]),
-      a: new FormControl(this.a, [Validators.required]),
-      b1: new FormControl(this.b1, [Validators.required]),
-      b2: new FormControl(this.b2, [Validators.required]),
-      pp: new FormControl(this.pp, [Validators.required]),
-      c: new FormControl(this.c, [Validators.required]),
-      ca: new FormControl(this.ca, [Validators.required]),
-      p: new FormControl(this.p, [Validators.required]),
-      fe: new FormControl(this.fe, [Validators.required]),
+      protein: new FormControl(undefined, [Validators.required]),
+      fat: new FormControl(undefined, [Validators.required]),
+      carbohydrates: new FormControl(undefined, [Validators.required]),
+      kcal: new FormControl(undefined, [Validators.required]),
+      kj: new FormControl(undefined, [Validators.required]),
+      a: new FormControl(undefined, [Validators.required]),
+      b1: new FormControl(undefined, [Validators.required]),
+      b2: new FormControl(undefined, [Validators.required]),
+      pp: new FormControl(undefined, [Validators.required]),
+      c: new FormControl(undefined, [Validators.required]),
+      ca: new FormControl(undefined, [Validators.required]),
+      p: new FormControl(undefined, [Validators.required]),
+      fe: new FormControl(undefined, [Validators.required]),
+      
     });
 
-    this.productGroups = this._productsService.getProductGroups();
+    this.getFormGroup();
+
+    this.productGroups = this._productsService.getProductGroups()
     if (!this.selectedActivityType) {
       this.selectedActivityType = this.productGroups[0];
     }
@@ -140,4 +132,10 @@ export class AddProductComponent implements OnInit {
   public submit(): void {
     this.submitProductForm.emit(this.getData());
   }
+
+  private getFormGroup() : void {
+    this.submitProductFormGroup.emit(this.productAddForm);
+    
+  }
+
 }
