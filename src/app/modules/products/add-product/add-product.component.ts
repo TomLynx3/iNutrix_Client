@@ -1,7 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomIcon, IconFamily } from '@ibabylondev/custom-icon';
-import { ProductGroupDTO, ProductsService, ProductDTO } from 'src/app/services/products/products.service';
+import {
+  ProductGroupDTO,
+  ProductsService,
+  ProductDTO,
+} from 'src/app/services/products/products.service';
 
 @Component({
   selector: 'add-product',
@@ -10,7 +14,7 @@ import { ProductGroupDTO, ProductsService, ProductDTO } from 'src/app/services/p
 })
 export class AddProductComponent implements OnInit {
   @Output() public submitProductForm: EventEmitter<ProductDTO> =
-  new EventEmitter<ProductDTO>();
+    new EventEmitter<ProductDTO>();
 
   @Output() public submitProductFormGroup: EventEmitter<FormGroup> = 
   new EventEmitter<FormGroup>();
@@ -40,7 +44,7 @@ export class AddProductComponent implements OnInit {
     value: ['fas', 'c'],
   };
 
-  public axeroftolIcon : CustomIcon = {
+  public axeroftolIcon: CustomIcon = {
     iconFamily: IconFamily.FONTAWESOME,
     value: ['fas', 'a'],
   };
@@ -100,11 +104,11 @@ export class AddProductComponent implements OnInit {
 
   public selectProductType(productGroupName: ProductGroupDTO) {
     this.selectedActivityType = productGroupName;
-    
   }
 
   private getData(): ProductDTO {
     return {
+      id: '',
       name: this.productAddForm.controls.productName.value,
       protein: this.productAddForm.controls.protein.value,
       fat: this.productAddForm.controls.fat.value,
@@ -121,12 +125,12 @@ export class AddProductComponent implements OnInit {
       fe: this.productAddForm.controls.fe.value,
       selected: this.selected,
       productGroup: this.selectedActivityType!,
+      isCustom: true,
     };
-
   }
 
   public submit(): void {
-    this.submitProductForm.emit(this.getData())
+    this.submitProductForm.emit(this.getData());
   }
 
   private getFormGroup() : void {

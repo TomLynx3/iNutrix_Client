@@ -20,6 +20,13 @@
     }
   }
 
+  .table-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+  }
+
   .actions {
     display: flex;
     width: 100% !important;
@@ -44,15 +51,14 @@
   }
 
   .empty-list {
-    color: black;
+    color: white;
+    margin-top: 2rem;
     position: absolute;
-    left: 28%;
-    bottom: 30%;
 
     p {
       font-size: 1.5em;
       font-style: italic;
-      color: rgba(0, 0, 0, 0.54);
+      color: rgba(238, 231, 231, 0.54);
       font-weight: bold;
     }
   }
@@ -62,5 +68,20 @@
   min-height: 700px;
   .product-table {
     height: 100%;
+    ::ng-deep table {
+      .mat-header-cell {
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+.search-container {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  max-width: 40%;
+
+  .text-muted {
+    color: black !important;
   }
 }

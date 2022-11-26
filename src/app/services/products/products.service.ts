@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { BaseResponse } from 'src/app/utilities/types';
 
@@ -9,7 +10,10 @@ import { BaseResponse } from 'src/app/utilities/types';
 export class ProductsService {
   private readonly _controllerURL = '/api/products';
 
-  constructor(private readonly _http: HttpClient) {}
+  constructor(
+    private readonly _http: HttpClient,
+    private readonly _translateService: TranslateService
+  ) {}
 
   public getAllProducts(): Observable<GetAllProductsRes> {
     return this._http.get<GetAllProductsRes>(this._controllerURL);
@@ -18,21 +22,49 @@ export class ProductsService {
   public getProductGroups(): ProductGroupDTO[] {
     return [
       {
-        groupName: "Vegetables", 
+        groupName: 'Vegetables',
         id: '1',
       },
       {
-        groupName: "Fruit", 
+        groupName: 'Fruit',
         id: '2',
-      }
-    ]
+      },
+    ];
   }
+
+  public parseProducts(products: ProductDTO[]) {
+    for (let item of products) {
+      this._translateService.get(item.name).subscribe((trans: string) => {
+        item.name = trans;
+      });
+
+      this._translateService
+        .get(item.productGroup.groupName)
+        .subscribe((trans: string) => {
+          item.productGroup.groupName = trans;
+        });
+    }
+  }
+
+  public banProducts(products: BannedProduct[]): Observable<BaseResponse> {
+    return this._http.post<BaseResponse>(
+      `${this._controllerURL}/ban-products`,
+      products
+    );
+  }
+}
+
+export interface BannedProduct {
+  id: string;
+  name: string;
+  productGroup: ProductGroupDTO;
+  isCustom: boolean;
+  selected: boolean;
 }
 
 export interface GetAllProductsRes extends BaseResponse {
   result: ProductDTO[];
 }
-
 
 export interface ProductGroupDTO {
   groupName: string;
@@ -40,6 +72,7 @@ export interface ProductGroupDTO {
 }
 
 export interface ProductDTO {
+  id: string;
   productGroup: ProductGroupDTO;
   name: string;
   protein: number;
@@ -56,4 +89,5 @@ export interface ProductDTO {
   p: number;
   fe: number;
   selected: boolean;
+  isCustom: boolean;
 }

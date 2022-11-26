@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SideModalModule } from '../sidemodal/sidemodal.module';
 import { AddProductComponent } from './add-product/add-product.component';
 import { BanListComponent } from './ban-list/ban-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -23,6 +24,7 @@ import { BanListComponent } from './ban-list/ban-list.component';
     SharedModule,
     MatCheckboxModule,
     SideModalModule,
+    MatDialogModule,
   ],
   exports: [BanListComponent],
 })

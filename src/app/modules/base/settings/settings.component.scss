@@ -6,7 +6,7 @@
 }
 
 .calories-container {
-  height: 100%;
+  height: 50%;
   width: 60%;
   padding: 1rem;
   display: flex;
@@ -29,7 +29,7 @@
   .AMR {
     background-color: $accent-color;
     width: 60%;
-    height: 20%;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,4 +49,8 @@
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
   }
+}
+
+::ng-deep .ban-list-container {
+  margin-top: 2.5rem;
 }
