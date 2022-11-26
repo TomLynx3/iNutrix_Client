@@ -1,0 +1,43 @@
+@import "../../../../styles/variables";
+
+.product-item-container {
+  margin: 0.75rem;
+  .icon-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    custom-icon {
+      font-size: 1.5em;
+    }
+
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+  }
+
+  .product-name-container {
+    display: flex;
+    flex-direction: column;
+
+    .product-title {
+      font-size: 1.2em;
+      font-size: bold;
+    }
+
+    .product-group {
+      font-size: 0.9em;
+      font-style: italic;
+    }
+  }
+
+  .amount {
+    margin-top: 0.2rem;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+}

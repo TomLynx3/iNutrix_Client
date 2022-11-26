@@ -1,0 +1,48 @@
+<div class="diet-plan-container">
+  <div class="row" style="height: 100%">
+    <div class="col-4" style="position: relative">
+      <div class="row">
+        <div class="day-switch">
+          <custom-icon [iconData]="calendar"></custom-icon>
+          <div class="day-name">
+            {{ currentDietDay?.date | dateFormat: "dddd" }}
+            <br />
+            {{ currentDietDay?.date | dateFormat: "LL" }}
+          </div>
+
+          <div class="day-switcher-container">
+            <div class="day-switcher-actions">
+              <custom-icon
+                [iconData]="arrowLeft"
+                [ngClass]="{ disabled: currentIndex === 0 }"
+                (click)="prevDay()"
+              ></custom-icon>
+              <div class="progress-container">
+                {{ currentIndex + 1 }}/{{ diet.length }}
+              </div>
+              <custom-icon
+                [iconData]="arrowRight"
+                [ngClass]="{ disabled: currentIndex >= diet.length - 1 }"
+                (click)="nextDay()"
+              ></custom-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <diet-day-nutrition
+          [nutritions]="currentDietDay?.dietDayMetadata"
+        ></diet-day-nutrition>
+      </div>
+    </div>
+    <div class="col-4" style="height: 100%">
+      <p class="h4">{{ "MEAL_PLAN_PRODUCT_LIST" | translate }}</p>
+      <div class="product-list-container custom-card">
+        <diet-product-list
+          [productList]="currentDietDay?.dietDayMetadata?.products"
+        ></diet-product-list>
+      </div>
+    </div>
+    <div class="col-4">Hello</div>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import { Subject, debounceTime, combineLatest } from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
 import {
   BannedProduct,
+  GetBannedProductsRes,
   ProductDTO,
   ProductGroupDTO,
   ProductsService,
@@ -83,6 +84,14 @@ export class BanListComponent implements OnInit {
         }
         params.productTable.productsToRender = products;
       });
+
+    this._productService
+      .getBannedProducts()
+      .subscribe((res: GetBannedProductsRes) => {
+        if (res.success) {
+          this.bannedProducts = res.result;
+        }
+      });
   }
 
   public openProductList(): void {
@@ -145,7 +154,9 @@ export class BanListComponent implements OnInit {
   }
 
   public removeProducts() {
-    const selectedProducts = this.bannedProducts.filter((x) => x.selected);
+    const selectedProducts = this.bannedProducts
+      .filter((x) => x.selected)
+      .map((x) => x.id);
 
     if (selectedProducts.length <= 0) {
       return;
@@ -164,7 +175,20 @@ export class BanListComponent implements OnInit {
 
       ref.afterClosed().subscribe((proceed) => {
         if (proceed) {
-          console.log('DELETE');
+          this._productService
+            .removeFromBanList(selectedProducts)
+            .subscribe((res: BaseResponse) => {
+              if (res.success) {
+                this.bannedProducts = this.bannedProducts.filter(
+                  (x) => !selectedProducts.includes(x.id)
+                );
+                this._translateService
+                  .get('PRODUCTS_BAN_PRODUCTS_REMOVED_FROM_LIST')
+                  .subscribe((tran: string) => {
+                    this._toastService.success(tran);
+                  });
+              }
+            });
         }
       });
     });

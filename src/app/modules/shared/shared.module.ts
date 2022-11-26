@@ -20,6 +20,7 @@ import { UserDataFormComponent } from 'src/app/components/user-data-form/user-da
 import { DropdownDirective } from 'src/app/directives/dropdown.directive';
 import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MomentPipe } from 'src/app/utilities/pipes/moment.pipe';
 
 export const APP_PROVIDERS = [
   {
@@ -46,6 +47,7 @@ export const APP_PROVIDERS = [
     DropdownDirective,
     UserDataFormComponent,
     ConfirmationDialogComponent,
+    MomentPipe,
   ],
   providers: [APP_PROVIDERS],
   imports: [
@@ -79,6 +81,7 @@ export const APP_PROVIDERS = [
     UserDataFormComponent,
     ConfirmationDialogComponent,
     MatDialogModule,
+    MomentPipe,
   ],
 })
 export class SharedModule {}

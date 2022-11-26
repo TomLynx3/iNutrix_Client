@@ -52,6 +52,19 @@ export class ProductsService {
       products
     );
   }
+
+  public getBannedProducts(): Observable<GetBannedProductsRes> {
+    return this._http.get<GetBannedProductsRes>(
+      `${this._controllerURL}/ban-products`
+    );
+  }
+
+  public removeFromBanList(ids: string[]): Observable<BaseResponse> {
+    return this._http.post<BaseResponse>(
+      `${this._controllerURL}/ban-products-remove`,
+      ids
+    );
+  }
 }
 
 export interface BannedProduct {
@@ -64,6 +77,10 @@ export interface BannedProduct {
 
 export interface GetAllProductsRes extends BaseResponse {
   result: ProductDTO[];
+}
+
+export interface GetBannedProductsRes extends BaseResponse {
+  result: BannedProduct[];
 }
 
 export interface ProductGroupDTO {

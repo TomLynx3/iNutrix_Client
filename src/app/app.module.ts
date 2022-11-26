@@ -12,6 +12,7 @@ import { UserDataFormComponent } from './components/user-data-form/user-data-for
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MomentPipe } from './utilities/pipes/moment.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');

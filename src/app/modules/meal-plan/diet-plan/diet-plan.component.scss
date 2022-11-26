@@ -1,0 +1,62 @@
+.diet-plan-container {
+  height: 100%;
+  width: 100%;
+
+  .day-switch {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    custom-icon {
+      cursor: pointer;
+      font-size: 40px;
+    }
+
+    .day-name {
+      margin-top: 2rem;
+      font-weight: bold;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      line-height: 1.75em;
+      text-align: center;
+      font-size: 1.4em;
+    }
+
+    .day-switcher-container {
+      .day-switcher-actions {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        width: 140px;
+        justify-content: space-between;
+      }
+
+      .disabled {
+        pointer-events: none;
+        opacity: 0.3;
+      }
+
+      .progress-container {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.product-list-container {
+  cursor: pointer;
+  margin-top: 1rem;
+  padding: 1rem;
+  overflow-y: scroll;
+  width: 500px;
+  height: 90%;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
