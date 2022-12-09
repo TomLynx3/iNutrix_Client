@@ -31,8 +31,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       body: JSON.stringify(request.body),
       url: Root(request.url),
     });
-
-    console.log(req);
     return next
       .handle(req)
       .pipe(
@@ -40,17 +38,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
           setTimeout(() => {
             this._loadingService.setLoading(false, request.url);
           }, 150);
-
-          //  if (err.status === 403) {
-          //    this._router.navigate(['/login']);
-          //    return;
-          //  }
-
-          //  this._translateService
-          //    .get('ERRORS_UNKNOWN_ERROR')
-          //    .subscribe((translation: string) => {
-          //      this._toastService.error(translation);
-          //    });
 
           return err;
         })

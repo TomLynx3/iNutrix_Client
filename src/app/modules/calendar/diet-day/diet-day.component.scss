@@ -1,0 +1,46 @@
+.product-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 75%;
+  height: 65%;
+
+  display: flex;
+
+  .meal-type-switcher-container {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    custom-icon {
+      font-size: 35px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    span {
+      font-size: 2em;
+      font-weight: bold;
+    }
+  }
+
+  .product-list {
+    padding: 1.5rem;
+    margin-right: 2rem;
+    width: 80%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    .list {
+      padding: 0.5rem;
+    }
+  }
+
+  .consumed-checkbox {
+    display: flex;
+    align-items: center;
+  }
+}

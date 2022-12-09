@@ -72,7 +72,6 @@ export class SettingsComponent implements OnInit {
   }
 
   public getContainerColor(activityLevel: string): string {
-    console.log(activityLevel);
     switch (activityLevel) {
       case 'ff057b6e-518e-44be-ad63-303b1bd6790e':
         return '#36f1cd';

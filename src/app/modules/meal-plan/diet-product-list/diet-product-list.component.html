@@ -1,28 +1,44 @@
-<div class="product-item-container" *ngFor="let item of productListItems">
-  <div class="row">
-    <div class="col-2">
-      <div
-        class="icon-container custom-card"
-        [ngStyle]="{ 'background-color': item.productGroupIcon.color }"
-      >
-        <custom-icon [iconData]="item.productGroupIcon.icon"></custom-icon>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="product-name-container">
-        <div class="product-title">
-          {{ item.name }}
-        </div>
+<div
+  class="product-list"
+  cdkDropList
+  [cdkDropListData]="productListItems"
+  (cdkDropListDropped)="onDrop($event)"
+>
+  <div
+    class="product-item-container"
+    *ngFor="let item of productListItems"
+    cdkDrag
+    [cdkDragDisabled]="!allowDragAndDrop"
+    [ngClass]="{
+      'dropable-product-item': allowDragAndDrop,
+      'disabled-product': item.amount <= 0
+    }"
+  >
+    <div class="row">
+      <div class="col-2">
         <div
-          class="product-group"
-          [ngStyle]="{ color: item.productGroupIcon.color }"
+          class="icon-container custom-card"
+          [ngStyle]="{ 'background-color': item.productGroupIcon.color }"
         >
-          {{ item.productGroupName }}
+          <custom-icon [iconData]="item.productGroupIcon.icon"></custom-icon>
         </div>
       </div>
-    </div>
-    <div class="col-4">
-      <p class="amount">{{ item.amount * 100 | number: "1.2-2" }} g</p>
+      <div class="col-6">
+        <div class="product-name-container">
+          <div class="product-title">
+            {{ item.name }}
+          </div>
+          <div
+            class="product-group"
+            [ngStyle]="{ color: item.productGroupIcon.color }"
+          >
+            {{ item.productGroupName }}
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <p class="amount">{{ item.amount }} g</p>
+      </div>
     </div>
   </div>
 </div>

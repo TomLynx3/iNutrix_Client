@@ -16,11 +16,14 @@ export class AddProductComponent implements OnInit {
   @Output() public submitProductForm: EventEmitter<ProductDTO> =
     new EventEmitter<ProductDTO>();
 
-  @Output() public submitProductFormGroup: EventEmitter<FormGroup> = 
-  new EventEmitter<FormGroup>();
+  @Output() public submitProductFormGroup: EventEmitter<FormGroup> =
+    new EventEmitter<FormGroup>();
+
+  @Input()
+  public t: string | undefined;
 
   public selectedActivityType: ProductGroupDTO | undefined;
-  
+
   public selected: boolean = false;
 
   public nameIcon: CustomIcon = {
@@ -76,6 +79,8 @@ export class AddProductComponent implements OnInit {
   constructor(private readonly _productsService: ProductsService) {}
 
   ngOnInit(): void {
+    console.log(this.t);
+
     this.productAddForm = new FormGroup({
       productName: new FormControl('', [Validators.required]),
       protein: new FormControl(undefined, [Validators.required]),
@@ -91,12 +96,11 @@ export class AddProductComponent implements OnInit {
       ca: new FormControl(undefined, [Validators.required]),
       p: new FormControl(undefined, [Validators.required]),
       fe: new FormControl(undefined, [Validators.required]),
-      
     });
 
     this.getFormGroup();
 
-    this.productGroups = this._productsService.getProductGroups()
+    this.productGroups = this._productsService.getProductGroups();
     if (!this.selectedActivityType) {
       this.selectedActivityType = this.productGroups[0];
     }
@@ -133,9 +137,7 @@ export class AddProductComponent implements OnInit {
     this.submitProductForm.emit(this.getData());
   }
 
-  private getFormGroup() : void {
+  private getFormGroup(): void {
     this.submitProductFormGroup.emit(this.productAddForm);
-    
   }
-
 }

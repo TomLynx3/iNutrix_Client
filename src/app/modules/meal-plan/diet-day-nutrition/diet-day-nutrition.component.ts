@@ -1,6 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { CustomIcon, IconFamily } from '@ibabylondev/custom-icon';
-import { DietDayMetadata } from 'src/app/services/meal-service/meal.service';
+import {
+  DietDayMetadata,
+  DietDetails,
+  DietGoal,
+} from 'src/app/services/meal-service/meal.service';
 
 @Component({
   selector: 'diet-day-nutrition',
@@ -10,6 +14,11 @@ import { DietDayMetadata } from 'src/app/services/meal-service/meal.service';
 export class DietDayNutritionComponent implements OnInit {
   @Input()
   public nutritions: DietDayMetadata | undefined;
+
+  @Input()
+  public dietDetails: DietDetails | undefined;
+
+  public DietGoal = DietGoal;
 
   public proteinIcon: CustomIcon = {
     iconFamily: IconFamily.PNG,
@@ -63,7 +72,18 @@ export class DietDayNutritionComponent implements OnInit {
     iconFamily: IconFamily.PNG,
     value: 'assets/images/ferrum.png',
   };
+
+  public caloriesContainerColor: string = '#36f1cd';
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.dietDetails);
+
+    if (this.dietDetails?.dietGoal === DietGoal.BALANCEDIET) {
+      this.caloriesContainerColor = '#09d95f';
+    } else if (this.dietDetails?.dietGoal === DietGoal.MUSCLEGROWTH) {
+      this.caloriesContainerColor = '#d92109';
+    }
+  }
 }

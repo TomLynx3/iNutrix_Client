@@ -2,7 +2,21 @@
   "MEAL_PLAN_NEW_MEAL_PLAN": "New Meal Plan",
   "MEAL_PLAN_MUSCLE_GROWTH": "Muscle Growth",
   "MEAL_PLAN_WEIGHT_LOSS": "Weight Loss",
-  "MEAL_PLANB_BALANCED_DIET": "Balanced Diet",
+  "MEAL_PLAN_BALANCED_DIET": "Balanced Diet",
   "MEAL_PLAN_NEW_DIET": "New Diet",
-  "MEAL_PLAN_PRODUCT_LIST": "Product List"
+  "MEAL_PLAN_PRODUCT_LIST": "Product List",
+  "MEAL_PLAN_MEAL_PRODUCTS": "Meal Products",
+  "MEAL_PLAN_PREVIOUS": "Previous",
+  "MEAL_PLAN_NEXT": "Next",
+  "MEAL_PLAN_SHOW_MEALS": "Show Meals",
+  "MEAL_PLAN_SHOW_NUTRIENTS": "Show Nutrients",
+  "MEAL_PLAN_DIET_GOAL": "Your diet goal is ",
+  "MEAL_PLAN_DIET_NEEDED_CALORIES": "Daily you need ",
+  "METAL_PLAN_ADJUST_PRODUCT_LIST": "Adjust meal products",
+  "MEAL_PLAN_STOP_ADJUST_PRODUCT_LIST": "Stop adjust meal products",
+  "MEAL_PLAN_MEAL_ADJUSTMENT_ALLOWED": "Now you can drag and drop products from product list to meal products",
+  "MEAL_PLAN_MEAL_ADJUSTMENT_STOPPED": "Meal adjustment stopped",
+  "MEAL_PLAN_MEAL_MAX_ERROR": "Max value is ",
+  "MEAL_PLAN_SAVE_DIET": "Save Diet",
+  "MEAL_PLAN_CANT_SAVE_DIET": "Diet cannot be saved. Some products are not distributed over the meals"
 }

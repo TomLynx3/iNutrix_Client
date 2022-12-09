@@ -18,11 +18,18 @@ export class MealService {
     private readonly _translateService: TranslateService
   ) {}
 
-  public getDiet(dietGoal: DietGoal, days: number): Observable<GetDietRes> {
-    return this._http.post<GetDietRes>(`${this._controllerURL}/get-diet`, {
+  public createDiet(dietGoal: DietGoal, days: number): Observable<GetDietRes> {
+    return this._http.post<GetDietRes>(`${this._controllerURL}/create-diet`, {
       dietGoal,
       days,
     });
+  }
+
+  public saveDiet(diet: Diet): Observable<BaseResponse> {
+    return this._http.post<BaseResponse>(
+      `${this._controllerURL}/save-diet`,
+      diet
+    );
   }
 
   public castDailyProductToListItem(
@@ -39,8 +46,10 @@ export class MealService {
           id: item.productId,
           name: name,
           productGroupName: groupName,
-          productGroupIcon: this._getPorductGroupIcon(item.productGroup.id),
-          amount: item.amount,
+          productGroupIcon: this.getPorductGroupIcon(item.productGroup.id),
+          amount: this.castToGrams(item.amount),
+          maxValue: this.castToGrams(item.amount),
+          productGroup: item.productGroup,
         });
       });
     }
@@ -48,7 +57,22 @@ export class MealService {
     return res;
   }
 
-  private _getPorductGroupIcon(groupID: string): ColorfulIcon {
+  public castToGrams(amount: number): number {
+    return Math.round((amount * 100 + Number.EPSILON) * 100) / 100;
+  }
+
+  public getMealTypeTranslationItem(mealType: MealType) {
+    switch (mealType) {
+      case MealType.BREAKFAST:
+        return 'COMMON_BREAKFAST';
+      case MealType.LUNCH:
+        return 'COMMON_LUNCH';
+      case MealType.DINNER:
+        return 'COMMON_DINNER';
+    }
+  }
+
+  public getPorductGroupIcon(groupID: string): ColorfulIcon {
     switch (groupID) {
       case LookUpItemIDs.LookUp_ProductGroup_CerealProducts:
         return <ColorfulIcon>{
@@ -122,7 +146,7 @@ export class MealService {
           },
           color: '#C4E725',
         };
-      case LookUpItemIDs.LookUp_ProductGroup_FatsAndOils:
+      case LookUpItemIDs.LookUp_ProductGroup_FishProducts:
         return <ColorfulIcon>{
           icon: {
             iconFamily: IconFamily.FONTAWESOME,
@@ -139,12 +163,25 @@ export class MealService {
   }
 }
 
+export interface MealDTO {
+  mealType: MealType;
+  products: DailyProduct[];
+}
+
+export enum MealType {
+  BREAKFAST = 'BREAKFAST',
+  LUNCH = 'LUNCH',
+  DINNER = 'DINNER',
+}
+
 export interface ProductListItem {
   id: string;
   name: string;
   productGroupIcon: ColorfulIcon;
   productGroupName: string;
   amount: number;
+  maxValue: number;
+  productGroup: ProductGroupDTO;
 }
 
 export interface ColorfulIcon {
@@ -153,7 +190,7 @@ export interface ColorfulIcon {
 }
 
 export interface GetDietRes extends BaseResponse {
-  result: DietDay[];
+  result: Diet;
 }
 
 export interface DailyNutrientAmount {
@@ -169,7 +206,16 @@ export interface DailyProduct {
   productGroup: ProductGroupDTO;
 }
 
+export interface ProductBase {
+  productId: string;
+  name: string;
+  amount: number;
+  productGroup: ProductGroupDTO;
+  isCustom: boolean;
+}
+
 export interface DietDayMetadata {
+  meals: MealDTO[];
   products: DailyProduct[];
   protein: DailyNutrientAmount;
   fat: DailyNutrientAmount;
@@ -185,6 +231,19 @@ export interface DietDayMetadata {
   Fe: DailyNutrientAmount;
 }
 
+export interface Diet {
+  dietDays: DietDay[];
+  dietDetails: DietDetails;
+}
+
+export interface DietDetails {
+  dietGoal: DietGoal;
+  details: Object;
+}
+
+export interface BalancedDietDetails {
+  caloriesNeeded: number;
+}
 export interface DietDay {
   date: string;
   dietDayMetadata: DietDayMetadata;

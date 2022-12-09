@@ -13,5 +13,8 @@
   "COMMON_SUCCESSFULLY_SAVED": "Successfully saved",
   "COMMONT_EMPTY_LIST": "List is empty",
   "COMMON_SELECT": "Select",
-  "COMMIN_PROCEED": "Do you want to proceed?"
+  "COMMIN_PROCEED": "Do you want to proceed?",
+  "COMMON_BREAKFAST": "Breakfast",
+  "COMMON_LUNCH": "Lunch",
+  "COMMON_DINNER": "Dinner"
 }

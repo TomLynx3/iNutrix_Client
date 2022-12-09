@@ -1,0 +1,7 @@
+<div class="content-container">
+  <calendar-days
+    [days]="days"
+    (onDayChange)="onDayChange($event)"
+  ></calendar-days>
+  <diet-day [products]="currentDayProducts" [date]="date"></diet-day>
+</div>
