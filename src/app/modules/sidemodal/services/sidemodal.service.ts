@@ -35,7 +35,6 @@ export class SidemodalService {
   }
 
   public open(content: TemplateRef<any>, width?: string) {
-    console.log(content);
     const componentFactory =
       this._componentFactoryResolver.resolveComponentFactory(
         SidemodalComponent

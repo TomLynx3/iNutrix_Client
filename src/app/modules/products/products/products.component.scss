@@ -3,7 +3,11 @@
 }
 .sidebar-content {
   margin-top: 0;
-  display: block;
+  display: inline-block;
   height: 100%;
   overflow: scroll;
+  overflow-x: hidden;
+  position: relative;
 }
+
+

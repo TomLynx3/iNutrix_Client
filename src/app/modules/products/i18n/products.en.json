@@ -1,7 +1,13 @@
 {
   "PRODUCTS_TABLE_PRODUCT_NAME": "Name",
   "PRODUCTS_TABLE_ADD_NEW_PRODUCT": "Add New Product",
+  "PRODUCTS_TABLE_UPDATE_PRODUCT": "Update Product",
   "PRODUCTS_TABLE_CARBOHYDRATES": "Carbohydrates",
+  "PRODUCTS_TABLE_REMOVE_PRODUCTS": "Remove Products From Product list ?",
+  "PRODUCTS_TABLE_REMOVE_PRODUCTS_COUNT": "You are going to remove ... products.",
+  "PRODUCTS_TABLE_PRODUCTS_REMOVED_FROM_LIST": "Products successfully removed from product list",
+  "PRODUCTS_TABLE_PRODUCTS_ADDED_TO_LIST": "Products successfully added to product list",
+  "PRODUCTS_TABLE_PRODUCTS_UPDATE_TO_LIST": "Products successfully updated to product list",
   "PRODUCTS_BAN_PRODUCT": "Ban Products",
   "PRODUCTS_BAN_PRODUCTS_ADDED_TO_LIST": "Products successfully added to ban list",
   "PRODUCTS_BAN_PRODUCTS_REMOVED_FROM_LIST": "Products successfully removed from ban list",

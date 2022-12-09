@@ -49,16 +49,8 @@ export class BanListComponent implements OnInit {
     value: ['fas', 'magnifying-glass'],
   };
 
-  @Input()
-  public bannedProducts: BannedProduct[] = [
-    // {
-    //   name: 'Oats',
-    //   productGroup: {
-    //     id: '23',
-    //     groupName: 'Cerelal ',
-    //   },
-    // },
-  ];
+
+  public bannedProducts: BannedProduct[] = [];
 
   constructor(
     private readonly _sideBarService: SidemodalService,
@@ -90,6 +82,7 @@ export class BanListComponent implements OnInit {
       .subscribe((res: GetBannedProductsRes) => {
         if (res.success) {
           this.bannedProducts = res.result;
+          console.log(this.bannedProducts)
         }
       });
   }
@@ -144,6 +137,7 @@ export class BanListComponent implements OnInit {
 
   public get bannedProductIds() {
     return this.bannedProducts.map((x) => x.id);
+    
   }
 
   public onSearch(event: any, productTable: ProductsTableComponent) {
@@ -154,6 +148,7 @@ export class BanListComponent implements OnInit {
   }
 
   public removeProducts() {
+   
     const selectedProducts = this.bannedProducts
       .filter((x) => x.selected)
       .map((x) => x.id);
@@ -161,6 +156,7 @@ export class BanListComponent implements OnInit {
     if (selectedProducts.length <= 0) {
       return;
     }
+    
 
     combineLatest(
       this._translateService.get('PRODUCTS_BAN_REMOVE_PRODUCTS'),
@@ -181,7 +177,9 @@ export class BanListComponent implements OnInit {
               if (res.success) {
                 this.bannedProducts = this.bannedProducts.filter(
                   (x) => !selectedProducts.includes(x.id)
+                  
                 );
+                
                 this._translateService
                   .get('PRODUCTS_BAN_PRODUCTS_REMOVED_FROM_LIST')
                   .subscribe((tran: string) => {
