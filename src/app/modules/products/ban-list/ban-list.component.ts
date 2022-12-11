@@ -49,15 +49,7 @@ export class BanListComponent implements OnInit {
     value: ['fas', 'magnifying-glass'],
   };
 
-  public bannedProducts: BannedProduct[] = [
-    // {
-    //   name: 'Oats',
-    //   productGroup: {
-    //     id: '23',
-    //     groupName: 'Cerelal ',
-    //   },
-    // },
-  ];
+  public bannedProducts: BannedProduct[] = [];
 
   constructor(
     private readonly _sideBarService: SidemodalService,
@@ -89,6 +81,7 @@ export class BanListComponent implements OnInit {
       .subscribe((res: GetBannedProductsRes) => {
         if (res.success) {
           this.bannedProducts = res.result;
+          console.log(this.bannedProducts);
         }
       });
   }
@@ -181,6 +174,7 @@ export class BanListComponent implements OnInit {
                 this.bannedProducts = this.bannedProducts.filter(
                   (x) => !selectedProducts.includes(x.id)
                 );
+
                 this._translateService
                   .get('PRODUCTS_BAN_PRODUCTS_REMOVED_FROM_LIST')
                   .subscribe((tran: string) => {

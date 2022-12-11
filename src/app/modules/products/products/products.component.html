@@ -3,13 +3,13 @@
     <custom-icon [iconData]="addIcon" class="success"></custom-icon>
     <span class="action-text">{{ "COMMON_ADD" | translate }}</span>
   </div>
-  <div class="action-bar-container">
+  <div class="action-bar-container" (click)="productTable.delete()">
     <custom-icon [iconData]="deleteIcon" class="danger"></custom-icon>
     <span class="action-text">{{ "COMMON_DELETE" | translate }}</span>
   </div>
 </div>
 
-<products-table></products-table>
+<products-table #productTable></products-table>
 
 <ng-template #sidebar>
   <div class="sidebar-container">
@@ -18,10 +18,9 @@
     </div>
     <div class="sidebar-content">
       <add-product
-        (submitProductFormGroup)="saveProductForm($event)"
+        (submitProductFormGroup)="saveProductFormGroup($event)"
         (submitProductForm)="saveProduct($event)"
         #child
-        [t]="'lol'"
       ></add-product>
     </div>
     <div class="sidebar-footer custom-card">

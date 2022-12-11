@@ -1,18 +1,21 @@
 <div class="form-container">
-  <form [formGroup]="productAddForm">
+  <form [formGroup]="productAddForm" >
     <div class="form-input">
       <div class="form-text text-muted">
         {{ "PRODUCT_FORM_NAME" | translate }}
         <span
           class="required-asterix"
-          *ngIf="productAddForm?.controls?.productName?.errors?.required"
+          *ngIf="productAddForm?.controls?.productName?.errors?.required "
           >*</span
         >
       </div>
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <div class="input-group-text">
-            <custom-icon [iconData]="nameIcon"></custom-icon>
+            <custom-icon
+             [iconData]="nameIcon"
+             style="color: #ECDD7B"
+            ></custom-icon>
           </div>
         </div>
         <input
@@ -39,9 +42,9 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            
           >
           {{ selectedActivityType!.groupName | translate }}
-       
           </button>
           <div class="dropdown-menu">
             <a
@@ -121,7 +124,10 @@
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <div class="input-group-text">
-            <custom-icon [iconData]="carboIcon"></custom-icon>
+            <custom-icon 
+              [iconData]="carboIcon"
+              style="color: #7AE7C7"
+            ></custom-icon>
           </div>
         </div>
         <input
@@ -147,7 +153,10 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="percentIcon"></custom-icon>
+              <custom-icon 
+                [iconData]="jIcon"
+                style="color: #D3E298"
+              ></custom-icon>
             </div>
           </div>
           <input
@@ -171,7 +180,10 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="percentIcon"></custom-icon>
+              <custom-icon 
+                [iconData]="calloryIcon"
+                style="color: #CE8147"
+              ></custom-icon>
             </div>
           </div>
           <input
@@ -197,7 +209,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="axeroftolIcon"></custom-icon>
+              <custom-icon [iconData]="vitaminAIcon"></custom-icon>
             </div>
           </div>
           <input
@@ -220,7 +232,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="vitaminIcon"></custom-icon>
+              <custom-icon [iconData]="vitaminB1Icon"></custom-icon>
             </div>
           </div>
           <input
@@ -245,7 +257,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="vitaminIcon"></custom-icon>
+              <custom-icon [iconData]="vitaminB2Icon"></custom-icon>
             </div>
           </div>
           <input
@@ -268,7 +280,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="vitamin_pIcon"></custom-icon>
+              <custom-icon [iconData]="vitaminPPIcon"></custom-icon>
             </div>
           </div>
           <input
@@ -293,7 +305,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="carboIcon"></custom-icon>
+              <custom-icon [iconData]="vitaminCIcon"></custom-icon>
             </div>
           </div>
           <input
@@ -316,7 +328,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="carboIcon"></custom-icon>
+              <custom-icon [iconData]="calciumIcon"></custom-icon>
             </div>
           </div>
           <input
@@ -341,7 +353,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="vitamin_pIcon"></custom-icon>
+              <custom-icon [iconData]="vitaminPPIcon"></custom-icon>
             </div>
           </div>
           <input
@@ -364,7 +376,7 @@
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <custom-icon [iconData]="vitamin_fIcon"></custom-icon>
+              <custom-icon [iconData]="ferrumIcon"></custom-icon>
             </div>
           </div>
           <input

@@ -19,17 +19,8 @@ export class ProductsService {
     return this._http.get<GetAllProductsRes>(this._controllerURL);
   }
 
-  public getProductGroups(): ProductGroupDTO[] {
-    return [
-      {
-        groupName: 'Vegetables',
-        id: '1',
-      },
-      {
-        groupName: 'Fruit',
-        id: '2',
-      },
-    ];
+  public getProductGroups(): Observable<GetProductGroupsRes> {
+    return this._http.get<GetProductGroupsRes>(`${this._controllerURL}/product-groups`);
   }
 
   public parseProducts(products: ProductDTO[]) {
@@ -43,6 +34,14 @@ export class ProductsService {
         .subscribe((trans: string) => {
           item.productGroup.groupName = trans;
         });
+    }
+  }
+
+  public parseProductsGroup(products: ProductGroupDTO[]) {
+    for (let item of products) {
+      this._translateService.get(item.groupName).subscribe((trans: string) => {
+        item.groupName = trans;
+      });
     }
   }
 
@@ -65,6 +64,28 @@ export class ProductsService {
       ids
     );
   }
+
+  public customProductAdd(product: ProductDTO): Observable<AddCustomProductRes>{
+    return this._http.post<AddCustomProductRes>(
+      `${this._controllerURL}/custom-product-add`, 
+      product
+    )
+  }
+
+  public customProductDelete(productIds: string[]): Observable<BaseResponse>{
+    return this._http.post<BaseResponse>(
+      `${this._controllerURL}/custom-product-delete`, 
+      productIds
+    )
+  }
+
+  public customProductEdit(product: ProductDTO): Observable<BaseResponse>{
+    return this._http.post<BaseResponse>(
+      `${this._controllerURL}/custom-product-edit`, 
+      product
+    )
+  }
+
 }
 
 export interface BannedProduct {
@@ -73,6 +94,10 @@ export interface BannedProduct {
   productGroup: ProductGroupDTO;
   isCustom: boolean;
   selected: boolean;
+}
+
+export interface GetProductGroupsRes extends BaseResponse {
+  result: ProductGroupDTO[];
 }
 
 export interface GetAllProductsRes extends BaseResponse {
@@ -86,6 +111,10 @@ export interface GetBannedProductsRes extends BaseResponse {
 export interface ProductGroupDTO {
   groupName: string;
   id: string;
+}
+
+export interface AddCustomProductRes extends BaseResponse {
+  result: string;
 }
 
 export interface ProductDTO {
