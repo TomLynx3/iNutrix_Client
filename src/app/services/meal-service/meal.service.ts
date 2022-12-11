@@ -72,6 +72,28 @@ export class MealService {
     }
   }
 
+  public getDietGoalTranslationItem(dietGoal: DietGoal) {
+    switch (dietGoal) {
+      case DietGoal.BALANCEDIET:
+        return 'COMMON_BALANCED_DIET';
+      case DietGoal.MUSCLEGROWTH:
+        return 'COMMON_MUSCLE_GROWTH';
+      case DietGoal.WEIGHTLOSS:
+        return 'COMMON_WEIGHT_LOSS';
+    }
+  }
+
+  public getDietGoalContainerColor(dietGoal: DietGoal) {
+    switch (dietGoal) {
+      case DietGoal.BALANCEDIET:
+        return '#09d95f';
+      case DietGoal.MUSCLEGROWTH:
+        return '#d92109';
+      case DietGoal.WEIGHTLOSS:
+        return '#36f1cd';
+    }
+  }
+
   public getPorductGroupIcon(groupID: string): ColorfulIcon {
     switch (groupID) {
       case LookUpItemIDs.LookUp_ProductGroup_CerealProducts:

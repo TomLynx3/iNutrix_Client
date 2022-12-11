@@ -49,7 +49,6 @@ export class BanListComponent implements OnInit {
     value: ['fas', 'magnifying-glass'],
   };
 
-  @Input()
   public bannedProducts: BannedProduct[] = [
     // {
     //   name: 'Oats',

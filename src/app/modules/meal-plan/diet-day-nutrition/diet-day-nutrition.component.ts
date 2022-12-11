@@ -78,7 +78,6 @@ export class DietDayNutritionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.dietDetails);
 
     if (this.dietDetails?.dietGoal === DietGoal.BALANCEDIET) {
       this.caloriesContainerColor = '#09d95f';

@@ -5,6 +5,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { BaseResponse } from 'src/app/utilities/types';
 import {
   ColorfulIcon,
+  DietGoal,
   MealService,
   MealType,
   ProductBase,
@@ -71,6 +72,8 @@ export interface GetCurrentDietRes extends BaseResponse {
 export interface DietProgressDTO {
   id: string;
   days: DietProgressDay[];
+  dietGoal: DietGoal;
+  kcal: number;
 }
 
 export interface DietProgressDay {
@@ -81,4 +84,9 @@ export interface DietProgressDay {
 export interface DietProgressProductDTO extends ProductBase {
   consumed: boolean;
   mealType: MealType;
+}
+
+export interface ConsumedProduct {
+  productId: string;
+  consumed: boolean;
 }

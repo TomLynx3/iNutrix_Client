@@ -16,5 +16,8 @@
   "COMMIN_PROCEED": "Do you want to proceed?",
   "COMMON_BREAKFAST": "Breakfast",
   "COMMON_LUNCH": "Lunch",
-  "COMMON_DINNER": "Dinner"
+  "COMMON_DINNER": "Dinner",
+  "COMMON_BALANCED_DIET": "Balanced Diet",
+  "COMMON_MUSCLE_GROWTH": "Muscle Growth",
+  "COMMON_WEIGHT_LOSS": "Weight Loss"
 }
