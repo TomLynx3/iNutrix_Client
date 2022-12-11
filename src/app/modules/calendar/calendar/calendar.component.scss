@@ -1,0 +1,49 @@
+@import "../../../../styles/variables";
+.content-container {
+  height: 100%;
+  display: relative;
+
+  .diet-progress-container {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: flex;
+
+    flex-direction: column;
+
+    .diet-progess {
+      margin-top: 1rem;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .progress-bar {
+        display: flex;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        // background: conic-gradient(
+        //   $error-color var(--progress),
+        //   $accent-color 0deg
+        // );
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      // .progress-bar::after {
+      //   content: attr(data-progress) "%";
+      //   display: flex;
+      //   justify-content: center;
+      //   flex-direction: column;
+      //   width: 100%;
+      //   margin: 10px;
+      //   border-radius: 50%;
+      //   background: white;
+      //   font-size: 1rem;
+      //   text-align: center;
+      // }
+    }
+  }
+}

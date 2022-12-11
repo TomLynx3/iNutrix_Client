@@ -62,6 +62,14 @@ export class BaseComponent implements OnInit {
       name: 'BASE_USERMENU_MEAL_PLANS',
       route: '/meal-plans',
     },
+    {
+      icon: {
+        iconFamily: IconFamily.FONTAWESOME,
+        value: ['fas', 'calendar-days'],
+      },
+      name: 'BASE_USERMENU_CALENDAR',
+      route: '/calendar',
+    },
   ];
 
   ngOnInit(): void {

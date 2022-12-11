@@ -14,5 +14,11 @@
   "COMMON_SUCCESSFULLY_SAVED": "Successfully saved",
   "COMMONT_EMPTY_LIST": "List is empty",
   "COMMON_SELECT": "Select",
-  "COMMIN_PROCEED": "Do you want to proceed?"
+  "COMMIN_PROCEED": "Do you want to proceed?",
+  "COMMON_BREAKFAST": "Breakfast",
+  "COMMON_LUNCH": "Lunch",
+  "COMMON_DINNER": "Dinner",
+  "COMMON_BALANCED_DIET": "Balanced Diet",
+  "COMMON_MUSCLE_GROWTH": "Muscle Growth",
+  "COMMON_WEIGHT_LOSS": "Weight Loss"
 }

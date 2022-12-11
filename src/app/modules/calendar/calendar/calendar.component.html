@@ -1,0 +1,29 @@
+<div class="content-container" *ngIf="days.length > 0">
+  <div class="diet-progress-container">
+    <button class="btn btn-primary w-100">
+      {{ "CALENDAR_UPDATE_PROGRESS" | translate }}
+    </button>
+    <div class="diet-progess">
+      <div
+        class="progress-bar"
+        [ngStyle]="{ '--progress': getDegree(), background: getBGColor() }"
+      >
+        {{ progressPerc | number : "1.2-2" }} %
+      </div>
+    </div>
+  </div>
+  <calendar-days
+    [days]="days"
+    (onDayChange)="onDayChange($event)"
+  ></calendar-days>
+  <diet-day
+    [products]="currentDayProducts"
+    [date]="date"
+    [dietGoal]="progress?.dietGoal"
+    (onConsume)="onConsume($event)"
+  ></diet-day>
+</div>
+
+<div class="no-active-diet" *ngIf="days.length <= 0">
+  You don't have any active diet
+</div>

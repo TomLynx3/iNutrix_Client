@@ -27,7 +27,7 @@ export function TranslateServiceFactory(
 
     (<any>window).translateService.addLangs(['en', 'lv']);
     (<any>window).translateService.use(
-      (<any>window).translateService.getBrowserLang()
+      "en"
     );
   }
   return (<any>window).translateService;

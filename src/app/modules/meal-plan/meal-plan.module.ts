@@ -8,14 +8,23 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DietPlanComponent } from './diet-plan/diet-plan.component';
 import { DietProductListComponent } from './diet-product-list/diet-product-list.component';
 import { DietDayNutritionComponent } from './diet-day-nutrition/diet-day-nutrition.component';
+import { DietMealsComponent } from './diet-meals/diet-meals.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
-  declarations: [MealPlanComponent, DietPlanComponent, DietProductListComponent, DietDayNutritionComponent],
+  declarations: [
+    MealPlanComponent,
+    DietPlanComponent,
+    DietProductListComponent,
+    DietDayNutritionComponent,
+    DietMealsComponent,
+  ],
   imports: [
     CommonModule,
     MealPlanRoutingModule,
     SharedModule,
     ProductsModule,
+    DragDropModule,
     MatTabsModule,
   ],
 })
