@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="productsToRender" #table class="product-table">
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>
+    <th mat-header-cell *matHeaderCellDef class="select-all-container">
       <mat-checkbox (change)="selectAll($event)">{{
         "COMMON_SELECT_ALL" | translate
       }}</mat-checkbox>

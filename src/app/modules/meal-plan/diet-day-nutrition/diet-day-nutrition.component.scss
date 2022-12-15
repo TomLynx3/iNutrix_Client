@@ -40,6 +40,7 @@
     .text {
       font-size: 1.5em;
       font-weight: bold;
+      text-align: center;
     }
   }
 
@@ -52,5 +53,17 @@
       font-size: 1.3em;
       font-weight: bold;
     }
+  }
+}
+
+.sm-desktop {
+
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1600px) {
+  .sm-desktop {
+    max-height: 260px;
+    overflow: auto;
   }
 }
