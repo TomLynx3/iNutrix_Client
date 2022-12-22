@@ -54,3 +54,22 @@
 ::ng-deep .ban-list-container {
   margin-top: 2.5rem;
 }
+
+@media screen and (max-width: 1600px) {
+  .calories-container {
+    height: 50%;
+    width: 60%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+  
+  }  
+  .col-6 {
+    width: 60%;
+  }
+
+  
+}

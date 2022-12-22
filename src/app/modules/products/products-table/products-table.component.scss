@@ -12,3 +12,18 @@
   overflow-x: hidden;
   position: relative;
 }
+
+.select-all-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 130px;
+  text-align: left;
+}
+
+@media screen and (max-width: 1600px) {
+  .product-table {
+    height: 85%;
+    width: auto;
+  }
+}
+
