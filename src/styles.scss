@@ -137,3 +137,12 @@ custom-icon {
   pointer-events: none;
   opacity: 0.3;
 }
+
+@media screen and (max-width: 1600px) {
+  custom-icon {
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
